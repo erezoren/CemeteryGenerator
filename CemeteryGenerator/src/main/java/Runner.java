@@ -27,29 +27,118 @@ public class Runner {
 		for (SingleRecord singleRecord : hal) {
 			i++;
 			
-			StringBuilder sb = new StringBuilder();
-			sb.append("<tr>");
-			sb.append(System.getProperty("line.separator"));
-			sb.append("<td>" + singleRecord.getFullName() + "</td>");
-			sb.append(System.getProperty("line.separator"));
-			sb.append("<td style=\"vertical-align: top;\"><img class=\"mat\" style=\"width:400px;\"");
-			sb.append(System.getProperty("line.separator"));
-			sb.append(" src=\"" + singleRecord.getTumbImage() + "\" /></td> <td style=\"vertical-align: top;\"><img  style=\"width: 200px;\"");
-			sb.append(System.getProperty("line.separator"));
-			sb.append("src=\"" + singleRecord.getFaceImage() + "\" /></td>");
-			sb.append(System.getProperty("line.separator"));
-			// sb.append("<td><a href=\"mailto:erez_oren@yahoo.com?subject=" + new String("אודות ").concat(singleRecord.getFullName()) + "\">");
-			// sb.append(System.getProperty("line.separator"));
-			// sb.append("שלחו לנו מידע נוסף על " + singleRecord.getFullName() + " </a></td>");
-			sb.append("<td>" + getDescription(singleRecord.getId()) + "</td>");
-			sb.append(System.getProperty("line.separator"));
-			sb.append("</tr>");
-			
-			System.err.println(sb.toString());
+			// System.err.println(createTableRowV1(singleRecord));
+			System.err.println(createTableRowV2(singleRecord, i));
 			
 		}
 		System.err.println("Generated " + i + " records");
 		
+	}
+	
+	private static String createTableRowV1(SingleRecord singleRecord) throws MalformedURLException, IOException {
+		StringBuilder sb = new StringBuilder();
+		sb.append("<tr>");
+		sb.append(System.getProperty("line.separator"));
+		sb.append("<td>" + singleRecord.getFullName() + "</td>");
+		sb.append(System.getProperty("line.separator"));
+		sb.append("<td style=\"vertical-align: top;\"><img class=\"mat\" style=\"width:400px;\"");
+		sb.append(System.getProperty("line.separator"));
+		sb.append(" src=\"" + singleRecord.getTumbImage() + "\" /></td> <td style=\"vertical-align: top;\"><img  style=\"width: 200px;\"");
+		sb.append(System.getProperty("line.separator"));
+		sb.append("src=\"" + singleRecord.getFaceImage() + "\" /></td>");
+		sb.append(System.getProperty("line.separator"));
+		// sb.append("<td><a href=\"mailto:erez_oren@yahoo.com?subject=" + new String("אודות ").concat(singleRecord.getFullName()) + "\">");
+		// sb.append(System.getProperty("line.separator"));
+		// sb.append("שלחו לנו מידע נוסף על " + singleRecord.getFullName() + " </a></td>");
+		sb.append("<td>" + getDescription(singleRecord.getId()) + "</td>");
+		sb.append(System.getProperty("line.separator"));
+		sb.append("</tr>");
+		return sb.toString();
+	}
+	
+	// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	/*
+	 * <tr>
+				<td><a href="#myPopup"
+					data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">אהרן-דב פיגנבלט <img style="width: 200px;"
+					src="http://www.izkor.mod.gov.il/Data/korot/Image/091678.jpg" /></a>
+				<div data-role="popup" id="myPopup" class="ui-content">
+				    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+							<p class="innerText">
+								בן פרומה ושלמה, נולד ביום כ&quot;ב בשבט תרפ&quot;ח <span
+									style="white-space: nowrap;">(13.2.1928)</span> בעפולה. בהיותו
+								בן שמונה עברו הוריו לגור בקרית מוצקין שליד חיפה ושם למד בבית-ספר
+								יסודי. הוא התמסר לפעילות בתנועות נוער, תחילה ב&quot;מכבי&quot;
+								ואחר-כך בתנועת &quot;המחנות העולים&quot;, שם שימש כמדריך, יצא
+								להכשרה במשק יגור, והצטרף לשורות הפלמ&quot;ח. בכל הפעולות שהשתתף
+								בהן גילה רוח נכונות והקרבה, אם בהורדת מעפילים ואם בשדות-קרב.
+							</p>
+							<p class="innerText">בפרוץ מלחמת-העצמאות נתמנה למפקד מחלקה
+								ובראש מחלקתו נשלח להרי ירושלים ובמסגרת חטיבת &quot;הראל&quot;
+								השתתף בפעולות רבות בהרים ובכפרי הערבים.</p>
+							<p class="innerText">
+								אהרן-דב נפל אור ליום י&quot;ד בניסן תש&quot;ח <span
+									style="white-space: nowrap;">(23.4.1948)</span> בקרב נבי-סמואל.
+								לקראת סוף אפריל <span dir="ltr">1948</span> נערך בגזרת ירושלים
+								מבצע &quot;יבוסי&quot;, שנועד ליצור רצף טריטוריאלי עברי בתוך העיר
+								ובין ירושלים לבין היישובים שבצפונה. לצורך המבצע הועברה חטיבת
+								&quot;הראל&quot; לירושלים ובליל <span dir="ltr">22</span>-<span
+									dir="ltr">23</span> באפריל <span dir="ltr">1948</span> יצאו
+								כוחותיה לתקוף את שועפת, בית-איכסא ונבי-סמואל. תנועת הכוח
+								לנבי-סמואל ארכה זמן רב וההסתערות החלה עם שחר. נוכח אש האויב נאלץ
+								הכוח לסגת ובנסיגה הקשה לאור היום היו נפגעים רבים. אהרן-דב ידע כי
+								פעולה זו קשה מאוד ולפני צאתו אמר זאת לחברו, ואף-על-פי-כן לא נרתע
+								עד הרגע האחרון. הוא היה מפקד המחלקה שתקפה ועם נסיגתה נשאר לחפות
+								עליה. כדור פגע בבטנו והוא דרש במפגיע מחבריו שיניחוהו לנפשו כדי
+								שלא לעכבם בנסיגתם. כנראה שם בעצמו קץ לחייו ברימון כדי שלא יפול
+								בידי האויב, כי גופתו הובאה לבסיס כשהיא מרוסקת מרימון. הובא
+								למנוחת-עולמים בבית-הקברות הצבאי בקרית ענבים. אחרי מותו הועלה
+								לדרגת סגן.
+							</p>
+							<div>
+							<img style="width: 200px;"
+					src="http://www.izkor.mod.gov.il/Data/korot/Image/091678.jpg" />
+							<img
+						style="width: 400px;"
+						src="//static.wixstatic.com/media/d7f977_1eab1d12e2b84718957092a4d62dea4e.jpg" /></div>
+					</div></td>
+			</tr>
+	 */
+	
+	private static String createTableRowV2(SingleRecord singleRecord, int index) throws MalformedURLException, IOException {
+		StringBuilder sb = new StringBuilder();
+		sb.append("<tr>");
+		sb.append(System.getProperty("line.separator"));
+		sb.append("<td>");
+		sb.append(System.getProperty("line.separator"));
+		sb.append("<a href=\"#myPopup" + String.valueOf(index)
+				+ "\"	data-rel=\"popup\" class=\"ui-btn ui-btn-inline ui-corner-all\"  style=\"font-size:70px;\">");
+		sb.append(System.getProperty("line.separator"));
+		sb.append(singleRecord.getFullName() + "&nbsp&nbsp<img  style=\"width: 200px;\" src=\"" + singleRecord.getFaceImage() + "\" />" + "</a>");
+		sb.append(System.getProperty("line.separator"));
+		sb.append("<div data-role=\"popup\" id=\"myPopup" + String.valueOf(index) + "\" class=\"ui-content\">");
+		sb.append(System.getProperty("line.separator"));
+		sb
+				.append("<a href=\"#\" data-rel=\"back\" class=\"ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right\">Close</a>");
+		sb.append("<h1>" + singleRecord.getFullName() + "</h1>");
+		sb.append(System.getProperty("line.separator"));
+		sb.append(getDescription(singleRecord.getId()));
+		sb.append(System.getProperty("line.separator"));
+		sb.append("<div>");
+		sb.append(System.getProperty("line.separator"));
+		sb.append("<img  style=\"width:200px;\" src=\"" + singleRecord.getFaceImage() + "\" />");
+		sb.append("&nbsp&nbsp");
+		sb.append("<img  style=\"width:400px;\" src=\"" + singleRecord.getTumbImage() + "\" />");
+		sb.append("</div>");
+		sb.append(System.getProperty("line.separator"));
+		sb.append("</div>");
+		sb.append(System.getProperty("line.separator"));
+		sb.append("</td>");
+		sb.append(System.getProperty("line.separator"));
+		sb.append("</tr>");
+		
+		return sb.toString();
 	}
 	
 	private static String getDescription(int halalId) throws MalformedURLException, IOException {
